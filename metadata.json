@@ -1,0 +1,7 @@
+{
+  "name": "GIVD - Gestionnaire Intelligent",
+  "description": "Assistant intelligent de vie domestique. Gestion de stocks, scan OCR et automatisation des courses.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
