@@ -119,7 +119,7 @@ const Navbar: React.FC<NavbarProps> = ({ onDownloadClick }) => {
   );
 };
 
-const Hero = ({ onDownloadClick, onDemoClick }: { onDownloadClick: () => void; onDemoClick: () => void }) => (
+const Hero = ({ onDownloadClick }: { onDownloadClick: () => void }) => (
   <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <div className="text-center max-w-4xl mx-auto mb-12">
       <h1 className="font-display font-bold text-5xl md:text-7xl leading-none tracking-tight mb-6">
@@ -134,8 +134,8 @@ const Hero = ({ onDownloadClick, onDemoClick }: { onDownloadClick: () => void; o
         <NeoButton size="lg" variant="primary" onClick={onDownloadClick} className="w-full sm:w-auto flex items-center gap-2 justify-center">
           Tester gratuitement <ArrowRight size={20} />
         </NeoButton>
-        <NeoButton size="lg" variant="secondary" className="w-full sm:w-auto" onClick={onDemoClick}>
-          Voir la démo
+        <NeoButton size="lg" variant="secondary" className="w-full sm:w-auto" href="#en-savoir-plus">
+          En savoir plus
         </NeoButton>
       </div>
     </div>
@@ -378,27 +378,11 @@ export default function App() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
-  // Generic function to scroll to any section ID with proper offset
-  const scrollToId = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
     <div className="min-h-screen font-sans text-givd-dark selection:bg-givd-green selection:text-givd-dark">
       <Navbar onDownloadClick={() => setIsDownloadModalOpen(true)} />
       <Hero 
         onDownloadClick={() => setIsDownloadModalOpen(true)} 
-        onDemoClick={() => scrollToId('demonstration')}
       />
       <Features />
       <HowItWorks />
@@ -413,7 +397,7 @@ export default function App() {
             <NeoButton size="lg" className="bg-givd-dark text-white hover:bg-black" onClick={() => setIsDownloadModalOpen(true)}>
               Créer un compte
             </NeoButton>
-            <NeoButton size="lg" variant="secondary" onClick={() => scrollToId('en-savoir-plus')}>
+            <NeoButton size="lg" variant="secondary" href="#en-savoir-plus">
               En savoir plus
             </NeoButton>
           </div>
